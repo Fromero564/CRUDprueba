@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+</head>
+<body>
+    <section>
+    <h1> Productos con get</h1>
+
+
+    <% productos.forEach(function(producto){ %>
+      <p>Id: <%= producto.id %></p>
+        <p>Nombre: <%= producto.nombre %></p>
+        <p>Precio: <%= producto.precio %></p>
+        <p>Stock: <%= producto.stock %></p>
+      <h2>Modificar Producto</h2>
+      <form action="/actualizarProducto/<%= producto.id %>?_method=PUT" method="post">
+        <label for="id">ID</label>
+        <input type="text" name="id" id="id">
+    
+        <label for="nombre">Nombre</label>
+        <input type="text" name="name" id="nombre">
+    
+        <label for="precio">Precio</label>
+        <input type="text" name="price" id="precio">
+    
+        <label for="stock">Stock</label>
+        <input type="text" name="stockDispo" id="stockDispo">
+
+        <button type="submit">Modificar Producto</button>
+      </form>
+
+      <form method="POST" action="/eliminar/<%= producto.id %>?_method=DELETE">
+        <button type="submit">Eliminar producto</button>
+      </form>
+
+      
+      <% }); %>
+
+    </section>
+    <section>
+   <h1>Crear productos con Post</h1>
+   <form action="/crearProducto" method="post">
+    <label for="id">ID</label>
+    <input type="text" name="id" id="id">
+
+    <label for="nombre">Nombre</label>
+    <input type="text" name="name" id="nombre">
+
+    <label for="precio">Precio</label>
+    <input type="text" name="price" id="precio">
+
+    <label for="stock">Stock</label>
+    <input type="text" name="stockDispo" id="stockDispo">
+
+    <button type="submit">Crear Producto</button>
+
+   </form>
+</section>
+</body>
+</html>
